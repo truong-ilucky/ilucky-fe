@@ -17,8 +17,8 @@ const PageLogin = () => {
     const navigate = useNavigate();
 
     const validateSchema = Yup.object({
-        username: Yup.string().required("Username is required"),
-        password: Yup.string().required("Password is required"),
+        username: Yup.string().required(t("Username is required")),
+        password: Yup.string().required(t("Password is required")),
     })
 
     const handleSubmit =async (values) => {
@@ -65,9 +65,9 @@ const PageLogin = () => {
                        <ErrorMessage name="password" component="div" className="text-danger" />
                    </div>
 
-                   <button type="submit"> Đăng Nhập</button>
+                   <button type="submit">{t("Login")}</button>
                    <button onClick={(e)=> {e.preventDefault();
-                       navigate("/register")}} style={{color:"orange"}}>Tạo mới tài khoản</button>
+                       navigate("/register")}} style={{color:"orange"}}>{t("Register")}</button>
 
                </Form>
            </Formik>

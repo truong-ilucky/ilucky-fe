@@ -48,7 +48,13 @@ i18n.use(initReactI18next).init({
         Logout: "Logout",
         Spins: "Spins",
         "Matching correctly": "Matching correctly",
-        PopupRegisterTitle: "Bạn chắc chắn muốn đăng ký VIP ?"
+        PopupRegisterTitle: "Bạn chắc chắn muốn đăng ký VIP ?",
+        Rating:"Rating",
+        "User created successfully":"User created successfully",
+        "Username is required":"Username is required",
+        "Password is required":"Password is required",
+        "Password must be at least 6 characters":"Password must be at least 6 characters",
+        "Username already exists":"Username already exists",
       },
     },
     VI: {
@@ -103,7 +109,12 @@ i18n.use(initReactI18next).init({
         PlayerRanking: "Bảng xếp hạng ",
         Rating: "Xếp hạng",
         "User Name":"Người chơi",
-        "Total Star": "Tổng số sao"
+        "Total Star": "Tổng số sao",
+        "User created successfully":"Tạo tài khoản thành công.",
+        "Username is required":"không để trống trường này",
+        "Password is required":"không để trống trường này",
+        "Password must be at least 6 characters":"Ít nhất 6 kí tự",
+        "Username already exists":"Người dùng đã tồn tại",
       },
     }
 },

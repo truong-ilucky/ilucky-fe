@@ -6,10 +6,12 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./register.css"
+import {useTranslation} from "react-i18next";
 
 const Register = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const{t, i18n} = useTranslation();
 
     const togglePassword = (e) => {
         e.preventDefault();
@@ -17,10 +19,10 @@ const Register = () => {
     }
 
     const validateSchema = Yup.object({
-        username: Yup.string().required("Username is required"),
+        username: Yup.string().required(t("Username is required")),
         password: Yup.string()
-            .required("Password is required")
-            .min(6, "Password must be at least 6 characters"),
+            .required(t("Password is required"))
+            .min(6, t("Password must be at least 6 characters")),
     });
 
     const handleSubmit = async (values,{setFieldError}) => {
@@ -28,11 +30,11 @@ const Register = () => {
             const res = await axios.get(`http://localhost:8085/api/user/find/${values.username}`);
             console.log(res);
             if (res.status === "409") {
-                setFieldError("username", "Username already exists");
+                setFieldError("username", t("Username already exists"));
                 return;
             }
                 await axios.post("http://localhost:8085/api/user/create", values);
-                toast.success("User created successfully");
+                toast.success(t("User created successfully"));
                 navigate("/login");
 
         } catch (err) {
@@ -76,7 +78,7 @@ const Register = () => {
                     </div>
 
                     <div>
-                        <button type="submit">Create New User</button>
+                        <button type="submit">{t("Register")}</button>
                     </div>
                 </Form>
             </Formik>
