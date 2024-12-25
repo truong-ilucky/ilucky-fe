@@ -1,0 +1,110 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #120404;
+    font-family: Arial, sans-serif;
+}
+
+
+.register form {
+    background-color: #511414;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+.register div {
+    margin-bottom: 20px;
+}
+
+.register input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+.register button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    margin-left: 10px;
+}
+
+.text-danger {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+.register button[type="submit"] {
+    width: 100%;
+    padding: 2px;
+    background-color: #a77428;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register button[type="submit"]:hover {
+    background-color: #784f1a;
+}
+
+.register button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #c8921d;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.register button[type="button"]:hover {
+    background-color: #0056b3;
+}
+.field-pass {
+    position: relative;
+    width: 100%;
+}
+.password-input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+.showPass button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.showPass button:hover {
+    color: black;
+}
+
+

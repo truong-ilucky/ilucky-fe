@@ -1,22 +1,19 @@
 import React, { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StateProvider } from "./util/Hook/StoreHook";
+import Main from "./Main";
 
 const MOUNT_NODE = document.getElementById("root");
-const render = () => {
-  ReactDOM.render(
+const root = ReactDOM.createRoot(MOUNT_NODE)
+root.render(
     <StateProvider>
       <StrictMode>
-        <App />
+        <Main />
       </StrictMode>
-    </StateProvider>,
-    MOUNT_NODE
-  );
-};
+    </StateProvider>
+);
 
-render();
 
 reportWebVitals();

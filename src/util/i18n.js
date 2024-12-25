@@ -93,10 +93,17 @@ i18n.use(initReactI18next).init({
         "Send OTP": "Gửi OTP",
         Login: "Đăng nhập",
         Logout: "Đăng xuất",
-        Spins: "Đăng xuất",
+        // Spins: "Đăng xuất",
         "Matching correctly": "Kết hợp chính xác",
-        Confirm: "Xác nhận",
-        PopupRegisterTitle: "Bạn chắc chắn muốn đăng ký VIP ?"
+        // Confirm: "Xác nhận",
+        PopupRegisterTitle: "Bạn chắc chắn muốn đăng ký VIP ?",
+        Incorrect : "Thông tin đăng nhập không đúng !",
+        Success : "Đăng nhập thành công.",
+        Error : "Đăng nhập không thành công.",
+        PlayerRanking: "Bảng xếp hạng ",
+        Rating: "Xếp hạng",
+        "User Name":"Người chơi",
+        "Total Star": "Tổng số sao"
       },
     }
 },

@@ -10,6 +10,18 @@
     justify-content: center;
     font-weight: 500;
 }
+.main-login {
+    background-color: rgba(0, 0, 0, 0.592);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    color: #FFF;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
 
 .main-qua {
     /* background-color: rgba(0, 0, 0, 0.592); */

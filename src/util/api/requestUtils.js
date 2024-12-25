@@ -18,8 +18,13 @@ export function callApi(url, method, data = {}) {
     } : {}
   }).catch((e) => {
     console.log("error", e);
-    localStorage.setItem("token", "");
-    if(token)
-      return (window.location.reload());
+    if (e.response && (e.response.status === 401 || e.response.status === 403)) {
+      localStorage.setItem("token", "");
+      alert("Login failed. Please try again.");
+      if (token) {
+        return window.location.reload();
+      }
+    }
+    return Promise.reject(e);
   });
 }

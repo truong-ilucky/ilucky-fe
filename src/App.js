@@ -11,6 +11,7 @@ import HieuUngSao from "./images/free/HieuUngSao.png";
 import IconKimQuay from "./images/icon/IconKimQuay.svg";
 import IconLoa from "./images/icon/IconLoa.svg";
 import IconLoaTat from "./images/icon/IconLoaTat.svg";
+import iconLanguage from "./images/icon/iconLanguage";
 import bangdon from "./images/icon/bangdon.svg";
 import Congratulation from "./images/icon/Congratulation.svg";
 import LuckyRoulette from "./images/icon/LuckyRoulette.svg";
@@ -36,6 +37,8 @@ import PopupHuongDan from "./components/PopupHuongDan";
 import PopupBuyTurn from "./components/PopupBuyTurn";
 import { useTranslation } from "react-i18next";
 import "./util/i18n";
+import {useNavigate, useParams} from "react-router-dom";
+import PopupTopPlayer from "./components/PopupTopPlayer";
 
 export const prizes = [
   {
@@ -124,6 +127,21 @@ const App = () => {
 
   const audioRef = useRef(null);
   const audioDoneRef = useRef(null);
+  const navigate = useNavigate();
+  const [language, setLanguage] = useState(i18n.language || "VI");
+  const toggleLanguage = () => {
+      const changeLanguage = language === "VI" ? "EN" : "VI";
+      i18n.changeLanguage(changeLanguage)
+      setLanguage(changeLanguage)
+  }
+  const [showPlayer, setShowPlayer] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(!tokenLocal){
+            navigate("/login");
+        }
+        }, [navigate]);
 
   useEffect(() => {
     if(tokenLocal) {
@@ -131,7 +149,7 @@ const App = () => {
       wsGetLuckyPlayTurn();
     }
   });
-  
+
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio(mp3Main);
@@ -147,10 +165,10 @@ const App = () => {
     i18n.changeLanguage(languageUrl || "VI");
   }, [languageUrl]);
 
-  
+
   useEffect(() => {
     fetchData();
-  });
+  },[]);
 
   // Lấy số lượt chơi đang có
   const wsGetLuckyPlayTurn = async () => {
@@ -215,13 +233,14 @@ const App = () => {
   };
 
   const onLogout = (v) => {
-    localStorage.setItem("token", "");
+    localStorage.removeItem("token");
     window.location.reload();
   };
 
+
   // Edit
   return (
-    <div
+      <div
       style={{
         backgroundColor: "#333",
         width: gui.screenWidth,
@@ -237,21 +256,42 @@ const App = () => {
         backgroundSize: "cover",
       }}
     >
+          <div className="change"
+          style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end", // Căn chỉnh về bên phải
+              position: "absolute",
+              top: 60,
+              right: 80,
+              zIndex: 2,
+              gap: 10,
+          }}>
       <img
         onClick={() => {
           setIsMute((v) => !v);
         }}
         style={{
-          position: "absolute",
-          right: 80,
-          top: 60,
-          cursor: "pointer",
-          zIndex: 2,
+            cursor: "pointer",
+            width: 40,
+            height: 40,
         }}
         src={!isMute ? IconLoa : IconLoaTat}
       />
-      <div
-        style={{
+
+              <button  onClick={toggleLanguage}
+              style={{
+                  width: 40,
+                  height: 40,
+                  cursor: "pointer",
+                  borderRadius: "50%",
+                  backgroundColor: "orange",
+              }}>
+                  {language==="VI" ? "VI" : "EN"}
+              </button>
+          </div>
+          <div
+              style={{
           display: "flex",
           zIndex: 1,
           position: "absolute",
@@ -358,6 +398,11 @@ const App = () => {
               onClick={(v) => setShowHistory(true)}
               text={t("History")}
             />
+              <ItemOption
+              icon={IconSach}
+              onClick={(v) => setShowPlayer(true)}
+              text={t("Rating")}
+            />
             <ItemOption
               onClick={
                 () => setBuyMore(true)
@@ -373,8 +418,7 @@ const App = () => {
               icon={IconVuongMieng}
               text={t("Gift")}
             />
-            <ItemOption onClick={onLogout} text={t("Logout")} icon={logout} />
-          </div>
+              <ItemOption onClick={onLogout} text={t("Logout")} icon={logout} />  </div>
         </div>
       </div>
       {showQua ? (
@@ -409,6 +453,11 @@ const App = () => {
           onClose={() => setShowHuongDan(false)}
         />
       ) : null}
+          {showPlayer ? (
+        <PopupTopPlayer
+          onClose={() => setShowPlayer(false)}
+        />
+      ) : null}
     </div>
   );
 };
@@ -428,6 +477,8 @@ const ItemOption = ({ icon, text, onClick, type }) => (
     <img style={{}} src={icon} />
     {text ? text : ""}
   </div>
+
+
 );
 
 export default App;

@@ -1,0 +1,27 @@
+.denominations-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.denomination {
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #b4b4b4;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.denomination.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
